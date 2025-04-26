@@ -1,7 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
 
-/*let getComputerChoice = function() {
+
+
+
+let getComputerChoice = function() {
     let random = Math.floor(Math.random() * 100);
     // console.log(random);
     if (random >= 0 && random <= 33){
@@ -30,7 +33,8 @@ let computerScore = 0;
 }*/
 // console.log(getHumanChoice());
 
-/*let playRound = function(humanChoice, getComputerChoice) {
+/*let playRound = function(humanChoice, computerChoice) {
+    humanChoice = e.id.value;
     if (humanChoice == "rock" && computerChoice == "rock"){
         console.log("You tied");
     }
@@ -90,16 +94,123 @@ let computerScore = 0;
         console.log("You have tied with the computer");
     }
 }*/
+let result = document.querySelector("#result");
+
+let determineWinner = function(){
+    if(humanScore == 5 && humanScore > computerScore){
+       // let result = document.querySelector("#result");
+        result.textContent = "You won!";
+        result.style.color = "green";
+        result.style.fontSize = "30px";
+        humanScore = 0; computerScore = 0;
+       // result.textContent = "";
+
+
+    }
+    else if(computerScore == 5 && computerScore > humanScore){
+      //  let result = document.querySelector("#result");
+        result.textContent = "You lost! Computer won";
+        result.style.color = "red";
+        result.style.fontSize = "30px";
+        humanScore = 0; computerScore = 0;
+       // result.textContent = "";
+
+    }
+
+}
+
+
+
 
 
 
 const buttons = document.querySelectorAll("button");
-buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        console.log(btn.id);
-    })
 
+//result.textContent = "";
+
+buttons.forEach((btn) => {
+    btn.addEventListener("click", function() {
+        if (btn.id == "rock" && getComputerChoice() == "rock"){
+            //console.log("You tied");
+            //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            result.textContent = "";
+            //let player = document.querySelector("#player");
+           // player.textContent = "Your score: "+humanScore;
+        }
+        else if (btn.id  == "paper" && getComputerChoice() == "paper"){
+           // console.log("You tied");
+            //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+ "  Computer score: "+computerScore ;
+            result.textContent = "";
+        }
+        else if (btn.id  == "scissor" && getComputerChoice() == "scissor"){
+            //console.log("You tied");
+           // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            result.textContent = "";
+        }
+        else if (btn.id  == "rock" && getComputerChoice()== "paper"){
+           // console.log("You lose! Paper beats Rock");
+            computerScore++;
+            //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+        else if (btn.id  == "rock" && getComputerChoice()== "scissor"){
+           // console.log("You win! Rock beats Scissor");
+            humanScore++;
+           // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+        else if (btn.id  == "paper" && getComputerChoice() == "scissor"){
+           // console.log("You lose! Scissor beats Paper");
+            computerScore++;
+           // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+        else if (btn.id  == "paper" && getComputerChoice()== "rock"){
+           // console.log("You win! Paper beats Rock");
+            humanScore++;
+            //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+        else if (btn.id  == "scissor" && getComputerChoice()== "paper"){
+           // console.log("You win! Scissor beats Paper");
+            humanScore++;
+          //  console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+        else if (btn.id  == "scissor" && getComputerChoice()== "rock"){
+           // console.log("You lose! Rock beats Scissor");
+            computerScore++;
+           // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
+            let score = document.querySelector("#score");
+            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            result.textContent = "";
+            determineWinner();
+        }
+    })
 })
+
+
 
 
 
