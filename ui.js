@@ -6,7 +6,6 @@ let computerScore = 0;
 
 let getComputerChoice = function() {
     let random = Math.floor(Math.random() * 100);
-    // console.log(random);
     if (random >= 0 && random <= 33){
         return "rock";
     }
@@ -17,103 +16,53 @@ let getComputerChoice = function() {
         return "scissor";
     }
 }
-// console.log(getComputerChoice());
 
-/*let getHumanChoice = function() {
-    let choice = window.prompt("What will you play?");
-    if(choice.toLowerCase() == "rock") {
-        return choice;
-    }
-    else if(choice.toLowerCase() == "paper") {
-        return choice;
-    }
-    else if(choice.toLowerCase() == "scissor") {
-        return choice;
-    }
-}*/
-// console.log(getHumanChoice());
 
-/*let playRound = function(humanChoice, computerChoice) {
-    humanChoice = e.id.value;
-    if (humanChoice == "rock" && computerChoice == "rock"){
-        console.log("You tied");
-    }
-    else if (humanChoice == "paper" && computerChoice == "paper"){
-        console.log("You tied");
-    }
-    else if (humanChoice == "scissor" && computerChoice == "scissor"){
-        console.log("You tied");
-    }
-    else if (humanChoice == "rock" && computerChoice == "paper"){
-        console.log("You win! Rock beats Paper");
-        humanScore++;
-    }
-    else if (humanChoice == "rock" && computerChoice == "scissor"){
-        console.log("You win! Rock beats Scissor");
-        humanScore++;
-    }
-    else if (humanChoice == "paper" && computerChoice == "scissor"){
-        console.log("You lose! Scissor beats Paper");
-        computerScore++;
-    }
-    else if (humanChoice == "paper" && computerChoice == "rock"){
-        console.log("You lose! Rock beats Paper");
-        computerScore++;
-    }
-    else if (humanChoice == "scissor" && computerChoice == "paper"){
-        console.log("You win! Scissor beats Paper");
-        humanScore++;
-    }
-    else if (humanChoice == "scissor" && computerChoice == "rock"){
-        console.log("You lose! Rock beats Scissor");
-        computerScore++;
-    }
-  }
-  
-//   let humanSelection = getHumanChoice().toLowerCase();
-//   let computerSelection = getComputerChoice();
+let container = document.querySelector("#container");
+container.style.display = "flex";
+container.style.justifyContent = "space-evenly";
+container.style.paddingTop = "350px";
+container.style.paddingLeft = "400px";
+container.style.paddingRight = "400px";
+container.style.paddingBottom = "20px";
+container.style.backgroundColor = "skyBlue";
 
-//   playRound(humanSelection, computerSelection);
+let scoreSection = document.querySelector("#scoreSection");
+scoreSection.style.display = "flex";
+scoreSection.style.justifyContent = "center";
+scoreSection.style.alignItems = "center";
+scoreSection.style.fontSize = "30px";
+scoreSection.style.paddingTop = "20px";
 
-/*function playGame() {
+let resultSection = document.querySelector("#resultSection");
+resultSection.style.display = "flex";
+resultSection.style.justifyContent = "center";
+resultSection.style.alignItems = "center";
+resultSection.style.paddingTop = "20px";
 
-    for (i = 0; i < 5; i++ ) {
-        const humanSelection = getHumanChoice().toLowerCase();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        console.log("Your score: " +humanScore);
-        console.log("Computer score: " +computerScore);
-    }
-    if (humanScore > computerScore) {
-        console.log("You have won");
-    }
-    else if (computerScore > humanScore) {
-        console.log("You have lost. Computer have won")
-    }
-    else {
-        console.log("You have tied with the computer");
-    }
-}*/
+
+
 let result = document.querySelector("#result");
 
 let determineWinner = function(){
     if(humanScore == 5 && humanScore > computerScore){
-       // let result = document.querySelector("#result");
         result.textContent = "You won!";
         result.style.color = "green";
         result.style.fontSize = "30px";
-        humanScore = 0; computerScore = 0;
-       // result.textContent = "";
+        result.style.backgroundColor = "black";
+
+        humanScore = 0; computerScore = 0
 
 
     }
     else if(computerScore == 5 && computerScore > humanScore){
-      //  let result = document.querySelector("#result");
         result.textContent = "You lost! Computer won";
         result.style.color = "red";
         result.style.fontSize = "30px";
+        result.style.backgroundColor = "black";
+
         humanScore = 0; computerScore = 0;
-       // result.textContent = "";
+    
 
     }
 
@@ -134,7 +83,7 @@ buttons.forEach((btn) => {
             //console.log("You tied");
             //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore +"     ; Computer score: "+computerScore ;
             result.textContent = "";
             //let player = document.querySelector("#player");
            // player.textContent = "Your score: "+humanScore;
@@ -143,14 +92,14 @@ buttons.forEach((btn) => {
            // console.log("You tied");
             //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+ "  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+ "    ;  Computer score: "+computerScore ;
             result.textContent = "";
         }
         else if (btn.id  == "scissor" && getComputerChoice() == "scissor"){
             //console.log("You tied");
            // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+"     ; Computer score: "+computerScore ;
             result.textContent = "";
         }
         else if (btn.id  == "rock" && getComputerChoice()== "paper"){
@@ -158,7 +107,7 @@ buttons.forEach((btn) => {
             computerScore++;
             //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -167,7 +116,7 @@ buttons.forEach((btn) => {
             humanScore++;
            // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore +"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -176,7 +125,7 @@ buttons.forEach((btn) => {
             computerScore++;
            // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore +"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore +"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -185,7 +134,7 @@ buttons.forEach((btn) => {
             humanScore++;
             //console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -194,7 +143,7 @@ buttons.forEach((btn) => {
             humanScore++;
           //  console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -203,7 +152,7 @@ buttons.forEach((btn) => {
             computerScore++;
            // console.log("Your score: "+humanScore, "Computer score: "+computerScore );
             let score = document.querySelector("#score");
-            score.textContent = "Your score: "+humanScore+"  Computer score: "+computerScore ;
+            score.textContent = "Your score: "+humanScore+"     ; Computer score: "+computerScore ;
             result.textContent = "";
             determineWinner();
         }
@@ -211,7 +160,13 @@ buttons.forEach((btn) => {
 })
 
 
-
+buttons.forEach((btn) => {
+    btn.style.height= " 100px";
+    btn.style.width= "120px";
+    btn.style.fontSize= "20px";
+    btn.style.border = "solid";
+    
+})
 
 
 
